@@ -4,6 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <errno.h>
+#include <stddef.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+
 
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,7 +44,40 @@ typedef struct instruction_s
 
 } instruction_t;
 
-void push(stack_t **stack, int res);
+/**
+ * struct interpreter_s - struct for Monty interpreter
+ * @arg: argument passed to interpreter
+ * @file: file pointer for script file
+ * @content: buffer for script file content
+ * @lifi: line number of current instruction being executed
+ *
+ * Description: This struct defines a Monty interpreter and its properties.
+ */
+typedef struct interpreter_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+} interpreter_t;
+
+extern interpreter_t interpreter;
+
+void push(stack_t **stack, char *value, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+
 void pall(stack_t *stack);
+int is_number(char *str);
+stack_t *add_node(stack_t **stack, int n);
+void delete_node(stack_t **stack);
+int is_comment(char *line);
+int is_empty(char *line);
+void stack_free(stack_t **stack);
+void print_error(unsigned int line_number, const char *message);
+
+
+
+
+
 
 #endif
