@@ -39,19 +39,7 @@ int main(int argc, char *argv[])
 
 		if (opcode && opcode[0] != '#')
 		{
-			if (strcmp(opcode, "push") == 0 && value)
-			{
-				push(&stack, value, line_number);
-			}
-			else if (strcmp(opcode, "pall") == 0)
-			{
-				pall(stack);
-			}
-			else
-			{
-				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-				exit(EXIT_FAILURE);
-			}
+			exe(opcode, &stack, value, line_number);
 		}
 	}
 

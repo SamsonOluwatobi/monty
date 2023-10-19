@@ -65,16 +65,13 @@ extern interpreter_t interpreter;
 
 void push(stack_t **stack, char *value, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
-
 void pall(stack_t *stack);
 int is_number(char *str);
-stack_t *add_node(stack_t **stack, int n);
-void delete_node(stack_t **stack);
-int is_comment(char *line);
-int is_empty(char *line);
-void stack_free(stack_t **stack);
-void print_error(unsigned int line_number, const char *message);
-
+void pint(stack_t *stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void exe(char *opcode, stack_t **stack, char *value, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 
 
