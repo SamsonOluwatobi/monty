@@ -34,7 +34,6 @@ void push(stack_t **stack, char *value, unsigned int line_number)
 
 	new_node->next = *stack;
 	*stack = new_node;
-	free(new_node);
 }
 /**
  * pop - removes the top element of the stack

@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * is_number - checks if a string is a valid integer
- * @str: string to be checked
- *
- * Return: 1 if the string is a valid integer, 0 otherwise
- */
+* is_number - checks if a string is a valid integer
+* @str: string to be checked
+*
+* Return: 1 if the string is a valid integer, 0 otherwise
+*/
 int is_number(char *str)
 {
 	if (!str)
@@ -28,12 +28,12 @@ int is_number(char *str)
 
 
 /**
- * swap - swaps the top two elements of the stack
- * @stack: pointer to the stack
- * @line_number: line number of the command being executed
- *
- * Return: void
- */
+* swap - swaps the top two elements of the stack
+* @stack: pointer to the stack
+* @line_number: line number of the command being executed
+*
+* Return: void
+*/
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int temp;
@@ -47,4 +47,21 @@ void swap(stack_t **stack, unsigned int line_number)
 	temp = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = temp;
+}
+
+/**
+ * free_stack - frees a stack_t stack
+ * @stack: pointer to the stack
+ *
+ * Return: void
+ */
+void free_stack(stack_t *stack)
+{
+	while (stack != NULL)
+	{
+		stack_t *temp = stack;
+
+		stack = stack->next;
+		free(temp);
+	}
 }

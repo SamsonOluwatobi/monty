@@ -2,17 +2,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * main - entry point for the Monty bytecode interpreter
- * @argc: number of command-line arguments
- * @argv: array of command-line arguments
- *
- * Return: 0 on success, non-zero on failure
- */
+* main - entry point for the Monty bytecode interpreter
+* @argc: number of command-line arguments
+* @argv: array of command-line arguments
+*
+* Return: 0 on success, non-zero on failure
+*/
 int main(int argc, char *argv[])
 {
 	char *filename, *opcode, *value;
 	char line[1024];
 	unsigned int line_number = 0;
+
 	stack_t *stack = NULL;
 	FILE *fp;
 
@@ -24,13 +25,11 @@ int main(int argc, char *argv[])
 
 	filename = argv[1];
 	fp = fopen(filename, "r");
-
 	if (!fp)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-
 	while (fgets(line, sizeof(line), fp))
 	{
 		line_number++;
@@ -47,7 +46,7 @@ int main(int argc, char *argv[])
 			exe(opcode, &stack, value, line_number);
 		}
 	}
-
+	free_stack(stack);
 	fclose(fp);
 	return (0);
 }
