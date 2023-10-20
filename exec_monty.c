@@ -1,13 +1,13 @@
 #include "monty.h"
 /**
- * exe - execute opcode
- * @opcode: opcode to execute
- * @stack: pointer to the top of the stack
- * @value: value to push onto stack
- * @line_number: line number of opcode
- *
- * Return: 0 on success, -1 on failure
- */
+* exe - execute opcode
+* @opcode: opcode to execute
+* @stack: pointer to the top of the stack
+* @value: value to push onto stack
+* @line_number: line number of opcode
+*
+* Return: 0 on success, -1 on failure
+*/
 void exe(char *opcode, stack_t **stack, char *value, unsigned int line_number)
 {
 	if (strcmp(opcode, "push") == 0 && value)

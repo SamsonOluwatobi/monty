@@ -39,6 +39,11 @@ int main(int argc, char *argv[])
 
 		if (opcode && opcode[0] != '#')
 		{
+			if (strcmp(opcode, "push") == 0 && !value)
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
 			exe(opcode, &stack, value, line_number);
 		}
 	}
