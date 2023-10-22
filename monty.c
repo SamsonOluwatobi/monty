@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	filename = argv[1];
 	fp = fopen(filename, "r");
 	if (!fp)
@@ -35,7 +34,8 @@ int main(int argc, char *argv[])
 		line_number++;
 		opcode = strtok(line, " \t\n");
 		value = strtok(NULL, " \t\n");
-
+		if (*line == '#')
+			continue;
 		if (opcode && opcode[0] != '#')
 		{
 			if (strcmp(opcode, "push") == 0 && !value)
