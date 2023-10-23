@@ -8,7 +8,8 @@
 *
 * Return: 0 on success, -1 on failure
 */
-void exe(char *opcode, stack_t **stack, char *value, unsigned int line_number)
+void exe(char *opcode, stack_t **stack, char *value,
+unsigned int line_number)
 {
 	if (strcmp(opcode, "push") == 0 && value)
 		push(stack, value, line_number);
@@ -36,6 +37,10 @@ void exe(char *opcode, stack_t **stack, char *value, unsigned int line_number)
 		pchar(stack, line_number);
 	else if (strcmp(opcode, "pstr") == 0)
 		pstr(stack, line_number);
+	else if (strcmp(opcode, "rotl") == 0)
+		rotl(stack, line_number);
+	else if (strcmp(opcode, "rotr") == 0)
+		rotr(stack, line_number);
 	else
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
